@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @* <title>@ViewData["Title"] - DeliveryService</title> *@
+    <title>Zippora Logistics | Modern Delivery Solutions</title>
+    <link rel="shortcut icon" href="~/favicon.png?v=1.1" type="image/x-icon" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/DeliveryService.styles.css" asp-append-version="true" />
+    <script src="https://kit.fontawesome.com/c16f488409.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-danger border-bottom box-shadow mb-3 fixed-top">
+            <div class="container-fluid">
+
+            <a class="navbar-brand fw-bold text-White d-flex align-items-center" asp-controller="Advertisement" asp-action="Index">
+                <i class="fa-solid fa-truck-fast me-2 fs-4"></i>
+                    <span class="tracking-tight">ZIPPORA<span class="text-black"> LOGISTICS</span></span>
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item px-2">
+                            <a class="nav-link fw-medium d-flex align-items-center text-white" asp-controller="Advertisement" asp-action="Index">
+                            <i class="fa-solid fa-house me-2"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item px-2">
+                            <a class="nav-link fw-medium d-flex align-items-center text-white" asp-controller="Advertisement" asp-action="Special">
+                                <i class="fa-solid fa-clipboard-user me-2"> </i> Employeer's
+                        </a>
+                    </li>
+                    <li class="nav-item px-2">
+                            <a class="nav-link fw-medium d-flex align-items-center text-white" asp-controller="Advertisement" asp-action="Search">
+                                <i class="fa-solid fa-clipboard-user me-2"></i> Recruments Status
+                        </a>
+                    </li>
+                    <li class="nav-item px-2">
+                            <a class="nav-link fw-medium d-flex align-items-center text-white" asp-controller="Home" asp-action="About">
+                            <i class="fa-solid fa-circle-info me-2"></i> About
+                        </a>
+                    </li>
+                    <li class="nav-item px-2">
+                            <a class="nav-link fw-medium d-flex align-items-center text-white" asp-controller="Home" asp-action="Contact">
+                            <i class="fa-solid fa-headset me-2"></i> Contact
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="d-flex align-items-center">
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+
+
+    <footer>
+    <div class="footer-container">
+       
+        <div class="footer-column">
+             <a class="navbar-brand fw-bold text-White d-flex align-items-center" asp-controller="Advertisement" asp-action="Index">
+                <i class="fa-solid fa-truck-fast me-2 fs-4"></i>
+                    <span class="tracking-tight">ZIPPORA<span class="text-black"> LOGISTICS</span></span>
+            </a>
+            @* <img src="logo.png" alt="Delivery Service" style="width: 150px;"> *@
+            <p>Fast, reliable, and secure delivery solutions since 2022.</p>
+        </div>
+        <div class="footer-column">
+            <h4>Company</h4>
+                <a  asp-controller="Home" asp-action="About">Privacy Policy</a>
+        </div>
+        <div class="footer-column">
+            <h4>Support</h4>
+            <a href="#">FAQs</a>@* 
+            <a href="#">Contact Us</a> *@
+                <a asp-controller="Home" asp-action="Contact">Contact Us</a>
+        </div>
+        <div class="footer-column">
+            <h4>Get In Touch</h4>
+                <a href="https://shorturl.at/PY323" class="text-decoration-none text-white fw-bold">Strada Azotului 4, 505200 Făgăraș, Romania</a>
+
+            <p>zipporalogistics@gmail.com</p>
+        </div>
+    </div>
+    <hr style="opacity: 0.2; margin: 20px 0;">
+    <p style="text-align: center;">&copy; 2026 - DeliveryService - All Rights Reserved by Ekrom Hossan (Software Developer)</p>
+</footer>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

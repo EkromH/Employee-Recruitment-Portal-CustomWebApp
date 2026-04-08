@@ -1,0 +1,67 @@
+﻿@model Advertisement
+
+@{
+    ViewData["Title"] = "Ad Details";
+}
+
+<div class="container mt-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-9">
+            <div class="mb-4">
+                <a asp-action="Index" class="text-decoration-none text-muted fw-bold small">
+                    <i class="fas fa-chevron-left me-1"></i> BACK TO CAMPAIGNS
+                </a>
+            </div>
+
+            <div class="card border-0 shadow-lg overflow-hidden rounded-4">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <img src="/AdsImages/@Model.Image"
+                             class="img-fluid h-100 w-100"
+                             style="object-fit: cover; min-height: 400px;"
+                             alt="@Model.Title">
+                    </div>
+
+                    <div class="col-md-6 d-flex flex-column">
+                        <div class="card-body p-5">
+                            <div class="mb-4">
+                                <span class="badge bg-primary-soft text-primary px-3 py-2 rounded-pill mb-3">Live Advertisement</span>
+                                <h1 class="display-6 fw-bold text-dark">@Model.Title</h1>
+                            </div>
+
+                            <div class="mb-5">
+                                <h6 class="text-uppercase text-muted fw-bold small tracking-widest mb-3">Description</h6>
+                                <p class="lead text-secondary" style="line-height: 1.8;">
+                                    @Model.Description
+                                </p>
+                            </div>
+
+                            <div class="mt-auto pt-4 border-top d-flex gap-3">
+                                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary px-4 py-2 rounded-3 shadow-sm">
+                                    <i class="fas fa-pen-nib me-2"></i>Modify Ad
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-danger px-4 py-2 rounded-3">
+                                    <i class="fas fa-trash-alt me-2"></i>Remove
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bg-primary-soft {
+        background-color: rgba(13, 110, 253, 0.1);
+    }
+
+    .tracking-widest {
+        letter-spacing: 0.1em;
+    }
+
+    .card {
+        transition: transform 0.3s ease;
+    }
+</style>

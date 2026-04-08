@@ -1,0 +1,541 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+html, body {
+    height: 100%;
+}
+body {
+    /*margin-bottom: 60px;*/
+    display: flex;
+    flex-direction: column;
+}
+
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+footer {
+    margin-top: auto;
+}
+.container {
+    flex: 1 0 auto;
+}
+/* Card styling */
+.ad-card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.2s;
+}
+
+/* Vertical colored bar on the left */
+.accent-border {
+    border-left: 6px solid #ccc; /* Default */
+}
+
+/* Image container styling (The square with circle inside) */
+.ad-img-container {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.ad-img-circle {
+    width: 30px;
+    height: 30px;
+    background-color: #FFD700; /* Yellow circle from image */
+    border-radius: 50%;
+}
+
+/* Dynamic colors based on index or category */
+.border-pink {
+    border-left-color: #FF6B81;
+}
+
+.border-purple {
+    border-left-color: #8E44AD;
+}
+
+.border-orange {
+    border-left-color: #F39C12;
+}
+
+.border-green {
+    border-left-color: #27AE60;
+}
+
+.border-blue {
+    border-left-color: #3498DB;
+}
+
+.border-gold {
+    border-left-color: #D4AF37;
+}
+
+.bg-pink {
+    background-color: #FF6B81;
+}
+
+.bg-purple {
+    background-color: #8E44AD;
+}
+/* ... add more matching the border colors ... */
+
+
+
+
+
+
+
+
+<style >
+/* Card Base Styling */
+.contact-card {
+    background: #fff;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+}
+
+/* Side Color Bars */
+.info-card {
+    border-left: 8px solid #28a745 !important;
+}
+
+.touch-card {
+    border-left: 8px solid #dc3545 !important;
+}
+
+/* Icon Box Styles */
+.icon-box {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+}
+
+.bg-success-light {
+    background-color: #e9f7ef;
+}
+
+.bg-danger-light {
+    background-color: #fdf2f2;
+}
+
+/* List Styling */
+.list-icon {
+    width: 35px;
+    font-size: 1.1rem;
+    margin-top: 5px;
+}
+
+.touch-list strong {
+    font-size: 1.05rem;
+    color: #333;
+}
+
+.working-hours {
+    border: 1px dashed #28a745;
+}
+
+/* Background Accent (Optional Decor) */
+.contact-card::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 100px;
+    height: 100px;
+    background: rgba(0,0,0,0.02);
+    border-radius: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Letter spacing for the small header */
+.ls-2 {
+    letter-spacing: 2px;
+}
+
+.ad-glass-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid #f0f0f0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+    .ad-glass-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+
+/* Image Styling */
+.ad-image-wrapper {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.ad-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.ad-glass-card:hover .ad-img {
+    transform: scale(1.1);
+}
+
+/* Hover Overlay */
+.ad-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.ad-image-wrapper:hover .ad-overlay {
+    opacity: 1;
+}
+
+/* Category Label */
+.ad-label {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #fff;
+    color: #333;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Content Area */
+.ad-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+}
+
+.ad-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #2d3436;
+    margin-bottom: 10px;
+    /* Limit title to 1 line */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ad-desc {
+    font-size: 0.9rem;
+    color: #636e72;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Show only 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Footer Section of Card */
+footer {
+    flex-shrink: 0;
+}
+.ad-footer {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f1f2f6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ad-id {
+    font-size: 0.75rem;
+    color: #b2bec3;
+    font-weight: 600;
+}
+
+/* Custom Icon Buttons */
+.btn-action {
+    width: 45px;
+    height: 45px;
+    background: #fff;
+    color: #333;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+    .btn-action:hover {
+        background: #0d6efd;
+        color: #fff;
+        transform: scale(1.1);
+    }
+.navbar-brand {
+    letter-spacing: -0.5px;
+}
+
+.nav-link {
+    transition: color 0.2s ease-in-out;
+    font-size: 0.95rem;
+}
+
+    .nav-link:hover {
+        color: yellow !important;
+        font-weight: bold;
+    }
+
+.nav-item .fa-solid {
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+#deliveryCarousel {
+    width: 100%;
+    margin-top: 0;
+    border-radius: 0;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.staff-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .staff-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 1rem 3rem rgba(0,0,0,.1) !important;
+    }
+
+.object-fit-cover {
+    object-fit: cover;
+}
+.bg-blue {
+    background-color: #1e3a5f; /* light dark blue */
+}
+
+:root {
+    --brand-blue: #4f75ff;
+    --brand-dark: #12161f;
+    --text-main: #1a1e26;
+    --text-muted: #6c757d;
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.hero-wrapper {
+    position: relative;
+    padding: 160px 0; /* Extra breathing room */
+    background-color: #ffffff;
+    font-family: var(--font-family);
+    overflow: hidden;
+}
+
+/* --- Typography --- */
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 3.75rem); /* Fluid typography */
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 720px;
+    margin: 0 auto 40px auto;
+}
+
+/* --- Professional Buttons --- */
+.hero-cta-group {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+.btn-primary-custom {
+    background-color: var(--brand-blue);
+    color: white;
+    padding: 16px 32px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 4px 14px 0 rgba(79, 117, 255, 0.39);
+}
+
+.btn-primary-custom:hover {
+    transform: translateY(-2px);
+    background-color: #3b60e6;
+    box-shadow: 0 6px 20px rgba(79, 117, 255, 0.23);
+}
+
+.btn-dark-custom {
+    background-color: var(--brand-dark);
+    color: white;
+    padding: 16px 32px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-dark-custom:hover {
+    background-color: #000;
+    transform: translateY(-2px);
+}
+
+/* --- Background Decoration (The "Magic") --- */
+.bg-blob {
+    position: absolute;
+    z-index: 0;
+    border-radius: 50%;
+    filter: blur(80px); /* Creates the soft look in your image */
+    pointer-events: none;
+}
+
+.blob-1 {
+    top: -10%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: rgba(79, 117, 255, 0.12);
+}
+
+.blob-2 {
+    bottom: -5%;
+    left: -5%;
+    width: 400px;
+    height: 400px;
+    background: rgba(79, 117, 255, 0.05);
+}
+
+/* Subtle line pattern for extra "Modern Business" feel */
+.hero-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(#e5e7eb 0.5px, transparent 0.5px);
+    background-size: 40px 40px;
+    opacity: 0.3;
+    z-index: 0;
+}
+.hero-section {
+    /* This adds 15% of the total screen height as top padding */
+    padding-top: 15vh !important;
+    padding-bottom: 10vh;
+    position: relative;
+}
+
+/* Adjust for mobile so it doesn't look too pushed down */
+@media (max-width: 768px) {
+    .hero-section {
+        padding-top: 80px !important;
+    }
+}
+.ads-title{
+    text-align: center;
+    font-weight: bold;
+}
+
+
+footer {
+    background-color: #d32f2f; /* Your red theme */
+    color: white;
+    padding: 40px 20px;
+    width: 100%;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr; /* Gives the brand more space */
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Fix for the overlapping text you see in the image */
+.footer-column h4 {
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.footer-column p, .footer-column a {
+    display: block;
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+}
+
+/* Responsive adjustment for mobile */
+@media (max-width: 768px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}

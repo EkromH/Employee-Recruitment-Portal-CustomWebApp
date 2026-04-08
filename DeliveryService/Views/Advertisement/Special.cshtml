@@ -1,0 +1,115 @@
+﻿@model IEnumerable<DeliveryService.Models.StaffInfo>
+
+@{
+    ViewData["Title"] = "Appointed Staff List";
+}
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    body {
+        font-family: 'Plus+Jakarta+Sans', sans-serif;
+        background-color: #f8f9fa;
+    }
+
+    .staff-card {
+        transition: transform 0.3s ease, shadow 0.3s ease;
+    }
+
+        .staff-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 1rem 3rem rgba(0,0,0,.175) !important;
+        }
+
+    .object-fit-cover {
+        object-fit: cover;
+    }
+
+    .status-badge {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(5px);
+    }
+</style>
+
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-5 mt-5">
+        <div>
+            @* //==========================================================STAFF View for client================= *@
+            <h1 class="fw-bold text-dark mb-0">Employeer's List</h1>
+            <p class="text-muted">List of staff members who have been officially appointed</p>
+        </div>
+        
+    </div>
+
+    <div class="row g-4">
+        @if (!Model.Any())
+        {
+            <div class="col-12 text-center py-5">
+                <div class="text-muted">
+                    <i class="fas fa-user-slash fa-3x mb-3"></i>
+                    <h4>No appointed staff found at the moment.</h4>
+                </div>
+            </div>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <div class="col-xl-3 col-lg-4 col-md-6">
+                    <div class="staff-card border-0 shadow-sm rounded-4 overflow-hidden bg-white h-100">
+                        <div class="position-relative" style="height: 250px;">
+                            <img src="~/AdsImages/@item.Photo"
+                                 class="w-100 h-100 object-fit-cover"
+                                 alt="@item.Name"
+                                 onerror="this.src='/AdsImages/default-avatar.png';" />
+
+                            <span class="badge status-badge position-absolute top-0 end-0 m-3 px-3 py-2 rounded-pill text-success shadow-sm small fw-bold border border-success">
+                                <i class="fas fa-check-circle me-1"></i> @item.Status
+                            </span>
+                        </div>
+
+                        <div class="p-4">
+                            <h5 class="fw-bold text-dark mb-1">@item.Name</h5>
+                            <p class="text-muted small mb-3">
+                                <i class="fas fa-passport me-2 text-primary"></i>@item.PassportNo
+                            </p>
+
+                            <div class="bg-light p-3 rounded-3 mb-4">
+                                <div class="d-flex justify-content-between small align-items-center">
+                                    <span class="text-muted">Joining Date:</span>
+                                    <span class="fw-bold text-dark">@item.Date.ToString("MMM dd, yyyy")</span>
+                                </div>
+                            </div>
+
+                            @* <div class="d-flex gap-2">
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-secondary btn-sm flex-grow-1 rounded-pill">Details</a>
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary btn-sm rounded-circle shadow-sm" title="Edit"><i class="fas fa-edit"></i></a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger btn-sm rounded-circle shadow-sm" title="Delete"><i class="fas fa-trash"></i></a>
+                            </div> *@
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+<style>
+    body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: #f8f9fa;
+    }
+
+    .staff-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .staff-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 1rem 3rem rgba(0,0,0,.1) !important;
+        }
+
+    .object-fit-cover {
+        object-fit: cover;
+    }
+</style>

@@ -1,0 +1,125 @@
+﻿@model IEnumerable<DeliveryService.Models.StaffInfo>
+
+@{
+    ViewData["Title"] = "Staff Directory";
+}
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<div class="container mt-5 pt-5">
+    <div class="d-flex justify-content-between align-items-center mb-2 mt-5">
+        <div>
+            <h1 class="fw-bold text-dark mb-0">Staff Management</h1>
+            <p class="text-muted">Overview of all registered personnel</p>
+        </div>
+        <a asp-action="Create" class="btn btn-primary rounded-pill px-4 shadow-sm">
+            <i class="fas fa-plus me-2"></i>Register New Staff
+        </a>
+    </div>
+    @* =======================================================Search area============= *@
+  @*   <div class="container ">
+        <div class="card border-0 shadow-sm p-4 mb-4 bg-light">
+            <form asp-action="Index" method="get" class="row g-3">
+                <div class="col-md-4">
+                    <label class="form-label fw-bold small">Filter by Status</label>
+                    <select name="status" class="form-select rounded-pill" asp-items="ViewBag.StatusList">
+                        <option value="">All Status</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label fw-bold small">Filter by Date</label>
+                    <input type="date" name="searchDate" class="form-select rounded-pill" />
+                </div>
+                <div class="col-md-4 d-flex align-items-end gap-2">
+                    <button type="submit" class="btn btn-primary rounded-pill px-4 flex-grow-1">Filter</button>
+                    <a asp-action="Index" class="btn btn-outline-secondary rounded-pill">Reset</a>
+                </div>
+            </form>
+        </div>
+    </div> *@
+
+    <div class="container">
+        <div class="card border-0 shadow-sm p-4 mb-4 bg-light rounded-4">
+            <form asp-action="Index" method="get" class="row g-3">
+
+                <div class="col-md-3">
+                    <label class="form-label fw-bold small text-muted">Search Applicant</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-end-0 rounded-start-pill">
+                            <i class="fas fa-search text-muted small"></i>
+                        </span>
+                        <input type="text" name="searchQuery" value="@ViewData["CurrentFilter"]"
+                               class="form-control border-start-0 rounded-end-pill"
+                               placeholder="Name or Passport No..." />
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <label class="form-label fw-bold small text-muted">Filter by Status</label>
+                    <select name="status" class="form-select rounded-pill" asp-items="ViewBag.StatusList">
+                        <option value="">All Statuses</option>
+                    </select>
+                </div>
+
+                <div class="col-md-3">
+                    <label class="form-label fw-bold small text-muted">Filter by Date</label>
+                    <input type="date" name="searchDate" value="@ViewData["CurrentDate"]"
+                           class="form-control rounded-pill" />
+                </div>
+
+                <div class="col-md-3 d-flex align-items-end gap-2">
+                    <button type="submit" class="btn btn-primary rounded-pill px-4 flex-grow-1 shadow-sm">
+                        <i class="fas fa-filter me-1"></i> Filter
+                    </button>
+                    <a asp-action="Index" class="btn btn-outline-secondary rounded-pill shadow-sm">
+                        <i class="fas fa-redo"></i>
+                    </a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    @* =======================================================Search area============= *@
+
+    <div class="row g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col-xl-3 col-lg-4 col-md-6">
+                <div class="staff-card border-0 shadow-sm rounded-4 overflow-hidden bg-white h-100">
+                    <div class="position-relative" style="height: 250px;">
+                        <img src="~/AdsImages/@item.Photo"
+                             class="w-100 h-100 object-fit-cover"
+                             alt="@item.Name"
+                             onerror="this.src='/AdsImages/default-avatar.png';" />
+
+                        <span class="badge position-absolute top-0 end-0 m-3 px-3 py-2 rounded-pill bg-white text-dark shadow-sm small fw-bold">
+                            @item.Status
+                        </span>
+                    </div>
+
+                    <div class="p-4">
+                        <h5 class="fw-bold text-dark mb-1">@item.Name</h5>
+                        <p class="text-muted small mb-3">
+                            <i class="fas fa-passport me-2"></i>@item.PassportNo
+                        </p>
+                        <div class="bg-light p-3 rounded-3 mb-4">
+                            <div class="d-flex justify-content-between small">
+                                <span class="text-muted">Apply Date:</span>
+                                <span class="fw-bold">@item.Date.ToString("MMM dd, yyyy")</span>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-secondary btn-sm flex-grow-1 rounded-pill">Details</a>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary btn-sm rounded-circle"><i class="fas fa-edit"></i></a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger btn-sm rounded-circle"><i class="fas fa-trash"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

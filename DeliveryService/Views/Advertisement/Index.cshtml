@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Advertisement>
+
+@{
+    ViewData["Title"] = "Premium Advertisements";
+}
+
+<section class="hero-section mt-5 pt-5">
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <h1 class="hero-title">
+                    We Build Scalable Logistics<br class="d-none d-md-block" />
+                    Solutions for Modern Delivery
+                </h1>
+                <p class="hero-subtitle">
+                    From last-mile delivery networks to enterprise-grade supply chains, we help<br class="d-none d-md-block" />
+                    startups and retailers transform logistics into a competitive advantage.
+                </p>
+                @* <div class="hero-buttons">
+                    <a href="#" class="btn-primary-custom">Get a Quote</a>
+                    <a href="#" class="btn-dark-custom">Track Shipment</a>
+                </div> *@
+                <a class="btn-primary-custom" asp-controller="Home" asp-action="Contact" class="text-white text-decoration-none">Contact</a>
+
+            </div>
+        </div>
+    </div>
+</section>
+<div class="text-center mb-5" style="margin-top: 4.5rem !important;">   
+        <h6 class="text-primary text-uppercase fw-bold ls-2">Discover</h6>
+        <h2 class="display-5 fw-bold text-dark">Our Featured Listings</h2>
+        <div class="mx-auto bg-primary" style="height: 3px; width: 60px;"></div>
+    </div>
+
+    <div class="row g-4">
+  
+ 
+        @foreach (var ad in Model)
+        {
+            <div class="col-lg-4 col-md-6">
+                <div class="ad-glass-card">
+                    <div class="ad-image-wrapper">
+                        <img src="~/AdsImages/@ad.Image"
+                             alt="@ad.Title"
+                             onerror="this.src='/AdsImages/default-placeholder.png';"
+                             class="ad-img" />
+
+                        <div class="ad-label">Featured</div>
+
+                       
+                    </div>
+
+                    <div class="ad-content">
+                        <h5 class="ad-title">@ad.Title</h5>
+                        <p class="ad-desc">@ad.Description</p>
+
+                        <div class="ad-footer">
+                            <span class="ad-id">REF: #@ad.Id.ToString("D4")</span>
+                         
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">

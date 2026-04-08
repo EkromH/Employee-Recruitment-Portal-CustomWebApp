@@ -1,0 +1,149 @@
+﻿@model DeliveryService.ViewModel.AdminViewModel
+@{
+    ViewData["Title"] = "Admin Portal";
+}
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background: #f0f2f5; /* Subtle grey background */
+        height: 100vh;
+    }
+
+    .admin-login-container {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+    }
+
+    .admin-card {
+        border: none;
+        border-radius: 1rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .admin-card-header {
+        background: white; /* Dark Sidebar/Admin Feel */
+        color: black;
+        padding: 2.5rem 2rem;
+        text-align: center;
+    }
+
+    .admin-card-body {
+        padding: 3rem 2.5rem;
+        background: white;
+    }
+
+    .form-label {
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: #495057;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .form-control {
+        height: 50px;
+        border-radius: 8px;
+        border: 1px solid #dee2e6;
+        padding-left: 1rem;
+    }
+
+        .form-control:focus {
+            border-color: #212529;
+            box-shadow: 0 0 0 0.25rem rgba(33, 37, 41, 0.1);
+        }
+
+    .btn-admin-login {
+        height: 50px;
+        background: #1879A3;
+        border: none;
+        font-weight: 700;
+        font-size: 1rem;
+        border-radius: 8px;
+        transition: transform 0.2s;
+    }
+
+        .btn-admin-login:hover {
+            background: #1879A3;
+            transform: translateY(-2px);
+        }
+
+    .admin-icon-box {
+        width: 60px;
+        height: 60px;
+        background: #1879A3;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+    }
+</style>
+
+<div class="container admin-login-container mt-5 pt-5">
+    <div class="row justify-content-center w-100">
+        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+
+            <div class="admin-card">
+                <div class="admin-card-header">
+                    <div class="admin-icon-box">
+                        <i class="fas fa-shield-halved fa-2x"></i>
+                    </div>
+                    <h3 class="mb-1 fw-bold">Admin Portal</h3>
+                    <p class="small mb-0 opacity-75">Secure Management Access</p>
+                </div>
+
+                <div class="admin-card-body">
+                    <form asp-action="AdminLogin" method="post">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2 small" role="alert"></div>
+
+                        <div class="mb-4">
+                            <label asp-for="UserName" class="form-label">Username</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-white border-end-0 text-muted">
+                                    <i class="fas fa-user-tie"></i>
+                                </span>
+                                <input asp-for="UserName" class="form-control border-start-0 ps-0" placeholder="admin_id" />
+                            </div>
+                            <span asp-validation-for="UserName" class="text-danger x-small"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="Password" class="form-label">Security Key</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-white border-end-0 text-muted">
+                                    <i class="fas fa-key"></i>
+                                </span>
+                                <input asp-for="Password" type="password" class="form-control border-start-0 ps-0" placeholder="••••••••" />
+                            </div>
+                            <span asp-validation-for="Password" class="text-danger x-small"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-admin-login w-100 mb-3 shadow">
+                            Authenticate <i class="fas fa-sign-in-alt ms-2"></i>
+                        </button>
+
+                        <div class="text-center">
+                            <a asp-controller="Advertisement" asp-action="Index" class="text-decoration-none text-muted small">
+                                <i class="fas fa-arrow-left me-1"></i> Return to Site
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

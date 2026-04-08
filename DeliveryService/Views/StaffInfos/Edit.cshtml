@@ -1,0 +1,178 @@
+﻿@model DeliveryService.ViewModel.StaffEditViewModel
+
+@{
+    ViewData["Title"] = "Edit Staff Member";
+}
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<div class="container mt-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="mb-4">
+                <a asp-action="Index" class="text-decoration-none text-muted small fw-bold">
+                    <i class="fas fa-arrow-left me-1"></i> BACK TO DIRECTORY
+                </a>
+                <h2 class="fw-bold text-dark mt-2">Edit Personnel Profile</h2>
+                <p class="text-muted">Modify the details below to update the staff member's records.</p>
+            </div>
+
+            <form asp-action="Edit" method="post" enctype="multipart/form-data" class="needs-validation">
+                @* Ensure the ID is passed back to the controller *@
+                <input type="hidden" asp-for="Id" />
+
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-sm rounded-4 p-4 text-center h-100">
+                            <label class="fw-bold mb-3 d-block text-uppercase small tracking-wider">Profile Picture</label>
+
+                            
+                            <div class="image-preview-wrapper mb-3">
+                                @* Prepend the folder path to the ExistingPhotoPath *@
+                                <img id="imagePreview"
+                                     src="@(string.IsNullOrEmpty(Model.ExistingPhotoPath) ? "/AdsImages/default-avatar.png" : "/AdsImages/" + Model.ExistingPhotoPath)"
+                                     class="img-fluid rounded-4 shadow-sm"
+                                     alt="Preview" />
+                            </div>
+
+                            <div class="mb-3">
+                                <input type="file" name="Photo" id="photoInput" class="form-control form-control-sm" accept="image/*" onchange="previewImage(event)" />
+                                <small class="text-muted d-block mt-2">Upload new to change. JPG, PNG. Max 2MB.</small>
+                            </div>
+
+                            <hr class="my-4 opacity-5">
+
+                            <div class="text-start">
+                                <label asp-for="Status" class="form-label fw-bold small text-uppercase">Current Status</label>
+                                <select asp-for="Status" class="form-select rounded-3" asp-items="@(new SelectList(ViewBag.StatusList))">
+                                </select>
+                                <span asp-validation-for="Status" class="text-danger small"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+                            <h5 class="fw-bold mb-4 border-bottom pb-2"><i class="fas fa-user-edit me-2 text-primary"></i>Identification Details</h5>
+
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-12">
+                                    <label asp-for="Name" class="form-label fw-bold small">Full Name</label>
+                                    <input asp-for="Name" class="form-control rounded-3 py-2" />
+                                    <span asp-validation-for="Name" class="text-danger small"></span>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label asp-for="PassportNo" class="form-label fw-bold small">Passport Number</label>
+                                    <input asp-for="PassportNo" class="form-control rounded-3 py-2" />
+                                    <span asp-validation-for="PassportNo" class="text-danger small"></span>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label asp-for="Date" class="form-label fw-bold small">Joining Date</label>
+                                    <input asp-for="Date" type="date" class="form-control rounded-3 py-2" />
+                                    <span asp-validation-for="Date" class="text-danger small"></span>
+                                </div>
+                            </div>
+
+                            <h5 class="fw-bold mb-3 border-bottom pb-2"><i class="fas fa-address-book me-2 text-primary"></i>Contact Information</h5>
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-12">
+                                    <label asp-for="MobileNumber" class="form-label fw-bold small">Mobile Number</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text bg-light rounded-start-3"><i class="fas fa-phone"></i></span>
+                                        <input asp-for="MobileNumber" class="form-control rounded-end-3 py-2" />
+                                    </div>
+                                    <span asp-validation-for="MobileNumber" class="text-danger small"></span>
+                                </div>
+                            </div>
+
+                            <h5 class="fw-bold mb-3 border-bottom pb-2"><i class="fas fa-users me-2 text-primary"></i>Family Records</h5>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label asp-for="FathersName" class="form-label fw-bold small">Father's Name</label>
+                                    <input asp-for="FathersName" class="form-control rounded-3 py-2" />
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label asp-for="MothersName" class="form-label fw-bold small">Mother's Name</label>
+                                    <input asp-for="MothersName" class="form-control rounded-3 py-2" />
+                                </div>
+                            </div>
+
+                            <div class="mt-5 d-flex gap-2 border-top pt-4">
+                                <button type="submit" class="btn btn-primary px-5 py-2 rounded-pill fw-bold shadow-sm">
+                                    Save Changes
+                                </button>
+                                <a asp-action="Index" class="btn btn-light px-4 py-2 rounded-pill fw-bold border">
+                                    Cancel
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: #f8fafc;
+    }
+
+    .tracking-wider {
+        letter-spacing: 0.05em;
+    }
+
+    .form-control:focus, .form-select:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+    }
+
+    .image-preview-wrapper {
+        width: 100%;
+        height: 200px;
+        background: #f1f5f9;
+        border-radius: 1rem;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px dashed #cbd5e1;
+    }
+
+    #imagePreview {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .btn-primary {
+        background: #2563eb;
+        border: none;
+    }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+</style>
+
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            var output = document.getElementById('imagePreview');
+            output.src = reader.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

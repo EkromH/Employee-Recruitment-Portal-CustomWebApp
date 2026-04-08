@@ -1,0 +1,48 @@
+﻿@model Advertisement
+
+@{
+    ViewData["Title"] = "Delete Advertisement";
+}
+
+<div class="container mt-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="bg-danger py-4 text-center text-white">
+                    <i class="fas fa-exclamation-circle fa-3x mb-2"></i>
+                    <h3 class="fw-bold mb-0">Confirm Delete</h3>
+                </div>
+
+                <div class="card-body p-4 text-center">
+                    <p class="text-muted mb-4">You are about to permanently remove the following advertisement:</p>
+
+                    <div class="p-3 bg-light rounded-3 mb-4">
+                        <img src="/AdsImages/@Model.Image" class="img-thumbnail rounded mb-3" style="max-height: 150px;" />
+                        <h5 class="fw-bold text-dark">@Model.Title</h5>
+                        <p class="small text-secondary text-truncate px-3">@Model.Description</p>
+                    </div>
+
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-danger btn-lg rounded-pill fw-bold">
+                                Yes, Delete It
+                            </button>
+                            <a asp-action="Index" class="btn btn-link text-muted text-decoration-none">
+                                Cancel and Go Back
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <small class="text-muted italic">
+                    <i class="fas fa-info-circle me-1"></i>
+                    Deleting this ad will also remove the image file from the server storage.
+                </small>
+            </div>
+        </div>
+    </div>
+</div>

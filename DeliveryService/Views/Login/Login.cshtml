@@ -1,0 +1,101 @@
+﻿@model DeliveryService.ViewModel.LoginViewModel
+@{
+    ViewData["title"] = "Login";
+}
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: #f4f7f6;
+    }
+
+    .login-card {
+        background: #ffffff;
+        border-radius: 1.25rem;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        border: none;
+    }
+
+    .form-control {
+        border-radius: 0.75rem;
+        padding: 0.75rem 1rem;
+        border: 1px solid #e0e0e0;
+    }
+
+        .form-control:focus {
+            box-shadow: 0 0 0 0.25 spent rgba(25, 135, 84, 0.1);
+            border-color: #198754;
+        }
+
+    .btn-login {
+        border-radius: 0.75rem;
+        padding: 0.75rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .login-header {
+        font-weight: 700;
+        color: #2d3436;
+    }
+</style>
+
+<div class="container mt-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6 col-lg-5">
+            <div class="card login-card p-4 p-md-5">
+                <div class="text-center mb-4">
+                    <div class="bg-success bg-opacity-10 d-inline-block p-3 rounded-circle mb-3">
+                        <i class="fas fa-user-lock fa-2x text-success"></i>
+                    </div>
+                    <h2 class="login-header"> Management Team</h2>
+                    <p class="text-muted">Please enter your details to login</p>
+                </div>
+
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger small mb-3"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label fw-600">Email Address</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0"><i class="fas fa-envelope text-muted"></i></span>
+                            <input asp-for="Email" class="form-control border-start-0" placeholder="name@example.com" />
+                        </div>
+                        <span asp-validation-for="Email" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Password" class="form-label fw-600">Password</label>
+
+                        <div class="input-group">
+                            <span class="input-group-text bg-light border-end-0"><i class="fas fa-lock text-muted"></i></span>
+                            <input asp-for="Password" type="password" class="form-control border-start-0" placeholder="••••••••" />
+                        </div>
+                        <span asp-validation-for="Password" class="text-danger small"></span>
+                    </div>
+
+                    <div class="form-check mb-4">
+                        <input asp-for="RememberMe" class="form-check-input" />
+                        <label asp-for="RememberMe" class="form-check-label text-muted small">Remember this device</label>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success btn-login shadow-sm">
+                            Login
+                        </button>
+                    </div>
+                </form>
+
+                <div class="mt-4 pt-3 border-top text-center">
+                   
+                    <a asp-controller="Advertisement" asp-action="Index" class="text-decoration-none text-muted small">
+                        <i class="fas fa-arrow-left me-1"></i> Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
