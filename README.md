@@ -28,10 +28,15 @@ View staff details
 Update recruitment status
 
 🔐 **Admin Panel**
+
 Secure admin login
+
 Manage recruitment workflow
+
 📊 User-Friendly UI
+
 Clean and modern design
+
 Responsive layout
 
 🛠️ **Technologies Used**
