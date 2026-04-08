@@ -12,20 +12,33 @@ This application is designed to streamline the employee recruitment process for 
 
 ✨ **Features**
 🔍 Smart Search
+
 Search staff by Passport Number or Mobile Number
+
 📋 Recruitment Status Tracking
+
 Passport Received
+
 Passport Verification
+
 Documents Received
+
 Documents Checked
+
 Selected
+
 Waiting for Appointment
+
 Appointed
 
 🧑‍💼 **Staff Management**
+
 Add new staff
+
 View staff details
+
 Update recruitment status
+
 
 🔐 **Admin Panel**
 
@@ -40,27 +53,49 @@ Clean and modern design
 Responsive layout
 
 🛠️ **Technologies Used**
+
 Backend
+
 ASP.NET Core MVC
+
 Entity Framework Core
+
 SQL Server
+
 Frontend
+
 HTML5
+
 CSS3
+
 Bootstrap
+
 JavaScript
+
 Tools
+
 Visual Studio
+
 Git & GitHub
 
+
 🧱 **Project Structure**
+
 Employee-Recruitment-Portal-CustomWebApp/
 │
+
 ├── Controllers/
+
 ├── Models/
+
 ├── ViewModels/
+
 ├── Views/
+
 ├── Data/
+
 ├── wwwroot/
+
 ├── appsettings.json
+
 └── Program.cs
