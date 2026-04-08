@@ -54,7 +54,7 @@ Responsive layout
 
 🛠️ **Technologies Used**
 
-Backend
+__Backend__
 
 ASP.NET Core MVC
 
@@ -62,7 +62,7 @@ Entity Framework Core
 
 SQL Server
 
-Frontend
+__Frontend__
 
 HTML5
 
