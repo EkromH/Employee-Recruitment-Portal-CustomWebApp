@@ -4,9 +4,11 @@ A custom-built Employee Recruitment Portal developed for a delivery service comp
 
 
 
+
 📌**Overview**
 
 This application is designed to streamline the employee recruitment process for delivery service companies. It allows administrators to manage staff information, track recruitment status, and search candidates using key identifiers like passport number or mobile number.
+
 
 ✨ **Features**
 🔍 Smart Search
@@ -19,16 +21,19 @@ Documents Checked
 Selected
 Waiting for Appointment
 Appointed
+
 🧑‍💼 **Staff Management**
 Add new staff
 View staff details
 Update recruitment status
+
 🔐 **Admin Panel**
 Secure admin login
 Manage recruitment workflow
 📊 User-Friendly UI
 Clean and modern design
 Responsive layout
+
 🛠️ **Technologies Used**
 Backend
 ASP.NET Core MVC
@@ -42,6 +47,7 @@ JavaScript
 Tools
 Visual Studio
 Git & GitHub
+
 🧱 **Project Structure**
 Employee-Recruitment-Portal-CustomWebApp/
 │
